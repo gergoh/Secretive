@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-class MyListAdapter extends ArrayAdapter {
+class MyListAdapter extends ArrayAdapter<String> {
 
     private String [] listNames;
     private String [] listDesc;
@@ -24,8 +24,8 @@ class MyListAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View itemView = convertView;
 
-        if (itemView == null){
-            LayoutInflater layoutInflater = context.getLayoutInflater();
+        if(itemView == null){
+            LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             itemView = layoutInflater.inflate(R.layout.listview_layout, parent, false);
         }
 

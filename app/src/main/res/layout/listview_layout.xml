@@ -27,6 +27,7 @@
         android:layout_alignStart="@+id/cipher_name"
         android:layout_below="@+id/cipher_name"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:textAlignment="viewStart"
         tools:text="A widely known substitution cipher named after Julius Caesar, who used it in his private correspondence" />
 </RelativeLayout>

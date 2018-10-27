@@ -16,7 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CaesarCipher"></activity>
+        <activity android:name=".CaesarCipher" />
+        <activity android:name=".VigenereCipher" />
+        <activity android:name=".PlayfairCipher" />
+        <activity android:name=".RailFenceCipher"></activity>
     </application>
 
 </manifest>
