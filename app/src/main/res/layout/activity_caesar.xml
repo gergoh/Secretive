@@ -51,23 +51,24 @@
 
     <Button
         android:id="@+id/encryptButton"
-        android:onClick="encryptClicked"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="encryptClicked"
         android:text="Encrypt"
         app:layout_constraintEnd_toStartOf="@+id/decryptButton"
         app:layout_constraintTop_toBottomOf="@+id/userInput" />
 
     <Button
         android:id="@+id/decryptButton"
-        android:onClick="decryptClicked"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="decryptClicked"
         android:text="Decrypt"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="105dp" />
+        app:layout_constraintTop_toBottomOf="@+id/userInput" />
 
 </android.support.constraint.ConstraintLayout>
