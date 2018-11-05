@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:label="Text Encrypting and Decrypting">
@@ -18,18 +19,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".CaesarCipher"
-            android:label="Caesar Cipher"></activity>
+            android:label="Caesar Cipher">
+        </activity>
+
         <activity
             android:name=".VigenereCipher"
-            android:label="Vigenere Cipher"></activity>
+            android:label="Vigenere Cipher">
+        </activity>
+
         <activity
             android:name=".PlayfairCipher"
-            android:label="Playfair Cipher"></activity>
+            android:label="Playfair Cipher">
+        </activity>
+
         <activity
             android:name=".RailFenceCipher"
-            android:label="Rail Fence Cipher"></activity>
+            android:label="Rail Fence Cipher">
+        </activity>
+
     </application>
 
 </manifest>
