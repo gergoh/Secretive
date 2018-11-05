@@ -101,16 +101,22 @@ public class RailFenceCipher extends AppCompatActivity {
 
     // Rail Fence decryption method
     private String decrypt(String text, int key) {
-        char [] decodedText = new char[text.length()];
-        int cycle = (key * 2) - 2;
+        String decodedText = new String();
+        char zigzag[][] = new char[key][text.length() / key];
 
-        for (int i = 0; i < text.length(); i++) {
-            for (int j = 0, letter = 0; i + j < text.length(); j += cycle, letter++) {
-                decodedText[i + j] = text.charAt(letter);
+
+        for (int i = 0, k = 0; i < key; i++) {
+            for (int j = 0; j < (text.length() / key); j++) {
+                zigzag[i][j] = text.charAt(k++);
+            }
+        }
+        for (int i = 0; i < (text.length() / key); i++) {
+            for (int j = 0; j < key; j++) {
+                decodedText += zigzag[j][i];
             }
         }
 
-        return new String(decodedText);
+        return decodedText;
     }
 
     // Changes layout to output_layer

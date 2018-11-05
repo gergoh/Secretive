@@ -13,7 +13,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Enter the text that you would like to encrypt/decrypt and choose a number (0-10) for the key"
+        android:text="Enter the text that you would like to encrypt/decrypt and choose a number for the key"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
