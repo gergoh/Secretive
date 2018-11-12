@@ -42,7 +42,8 @@ public class PlayfairCipher extends AppCompatActivity {
 
     // Action when user clicks Decryption button
     public void decryptClicked(View view) {
-        getData(cipherText, plainText);
+        getData(cipherText);
+        plainText = decrypt(cipherText);
         startOutput(plainText);
     }
 
@@ -218,7 +219,60 @@ public class PlayfairCipher extends AppCompatActivity {
     }
 
     // Playfair Cipher Decryption method
-    private String decrypt(String text, String key) {
+    private String decrypt(String text) {
+        // Stores the number of alphabetic letters in input
+        int letters = (text.replaceAll("[^a-zA-Z]+", "")).length();
+
+        // Format input into two letter chunks
+        char[][] formattedInput = new char[letters / 2][2];
+        for (int i = 0, itr = 0; i < text.length(); i++) {
+            for (int j = 0; j < 2; j++) {
+                while (!Character.isLetter(text.charAt(i))) i++;
+                formattedInput[itr++][j] = text.toUpperCase().charAt(i);
+            }
+        }
+
+        fillKeyTable(keyTable);
+
+        // Finding correct rule and finding index in key table
+        int[] firstIndex = new int[2];
+        int[] secondIndex = new int[2];
+        char [] decrypted = new char[formattedInput.length * 2];
+        for(int i = 0, j = 0; i < formattedInput.length; i++, j++){
+            for (int r = 0; r < 5; r++) {
+                for (int c = 0; c < 5; c++) {
+                    if (formattedInput[i][0] == keyTable[r][c]) {
+                        firstIndex[0] = r;
+                        firstIndex[1] = c;
+                    }
+                    if (formattedInput[i][1] == keyTable[r][c]) {
+                        secondIndex[0] = r;
+                        secondIndex[1] = c;
+                    }
+                }
+            }
+
+            // Getting correct decrypted letter from key table
+            findRule(keyTable, formattedInput[i]);
+            if(columnRule){
+                if(firstIndex[0] == 0) firstIndex[0] = 5;
+                decrypted[j++] = keyTable[firstIndex[0] - 1][firstIndex[1]];
+                if(secondIndex[0] == 0) secondIndex[0] = 5;
+                decrypted[j] = keyTable[secondIndex[0] - 1][secondIndex[1]];
+            }
+            if(rowRule){
+                if(firstIndex[1] == 0) firstIndex[1] = 5;
+                decrypted[j++] = keyTable[firstIndex[0]][firstIndex[1] - 1];
+                if(secondIndex[1] == 0) secondIndex[1] = 5;
+                decrypted[j] = keyTable[secondIndex[0]][secondIndex[1] - 1];
+            }
+            if(thirdRule){
+                decrypted[j++] = keyTable[firstIndex[1]][secondIndex[0]];
+                decrypted[j] = keyTable[secondIndex[1]][firstIndex[0]];
+            }
+        }
+
+        return new String(decrypted);
     }
 
     // Changes layout to output_layer
